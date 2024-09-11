@@ -21,7 +21,7 @@ function App() {
   };
 
   const visibleContacts = contacts.filter((contact) =>
-    contact.text.toLowerCase().includes(filter.toLowerCase())
+    contact.name.toLowerCase().includes(filter.toLowerCase())
   );
   return (
     <div>
