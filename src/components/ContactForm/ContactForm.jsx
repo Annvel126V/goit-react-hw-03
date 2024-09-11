@@ -8,13 +8,17 @@ const ContactForm = ({ onAdd }) => {
     e.preventDefault();
     onAdd({
       id: nanoid(),
-      text: e.target.elements.name.value,
+      name: e.target.elements.name.value,
+      number: e.target.elements.number.value,
     });
     e.target.reset();
   };
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" name="text" />
+      <p>Name</p>
+      <input type="text" name="name" />
+      <p>Number</p>
+      <input type="text" name="number" />
       <button type="submit">Add contact</button>
     </form>
   );
