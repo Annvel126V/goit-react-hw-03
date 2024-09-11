@@ -8,7 +8,7 @@ const ContactForm = ({ onAdd }) => {
     e.preventDefault();
     onAdd({
       id: nanoid(),
-      text: e.target.elements.text.value,
+      text: e.target.elements.name.value,
     });
     e.target.reset();
   };
