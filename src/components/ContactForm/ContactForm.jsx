@@ -1,4 +1,5 @@
 import { nanoid } from "nanoid";
+import s from "./ContactForm.module.css";
 
 // const nameId = nanoid();
 // const phoneId = nanoid();
@@ -14,12 +15,14 @@ const ContactForm = ({ onAdd }) => {
     e.target.reset();
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <p>Name</p>
-      <input type="text" name="name" />
-      <p>Number</p>
-      <input type="text" name="number" />
-      <button type="submit">Add contact</button>
+    <form className={s.form} onSubmit={handleSubmit}>
+      <p className={s.title}>Name</p>
+      <input className={s.input} type="text" name="name" />
+      <p className={s.title}>Number</p>
+      <input className={s.input} type="text" name="number" />
+      <button className={s.btn} type="submit">
+        Add contact
+      </button>
     </form>
   );
 };

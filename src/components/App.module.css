@@ -1,8 +1,16 @@
-#root {
-  max-width: 1280px;
+.container {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+  justify-content: center;
+}
+.title {
+  display: flex;
+  justify-content: center;
+  font-size: bold;
+  color: rgb(62, 13, 102);
+  text-shadow: 1px 1px 2px rgb(62, 13, 102), 0 0 1em rgb(242, 242, 243),
+    0 0 0.2em rgb(241, 239, 243);
 }
 
 .logo {
