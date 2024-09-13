@@ -1,29 +1,70 @@
 import { nanoid } from "nanoid";
 import s from "./ContactForm.module.css";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import * as Yup from "yup";
 
-// const nameId = nanoid();
-// const phoneId = nanoid();
+const validationYupSchema = Yup.object().shape({
+  name: Yup.string()
+    .matches(/^[A-Za-z\s]+$/, "ONLY WORDS")
+    .min(3, "A minimum of 3 characters must be entered!")
+    .max(50, "A maximum of 50 characters must be entered")
+    .required("This field is required!"),
+  number: Yup.string()
+    .matches(/^[+\d\s]+$/, "ONLY NUMBERS!")
+    .min(3, "A minimum of 3 characters must be entered!")
+    .max(50, "A maximum of 50 characters must be entered")
+    .required("This field is required!"),
+});
+
+const nameId = nanoid();
+const numberId = nanoid();
 
 const ContactForm = ({ onAdd }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (values, { resetForm }) => {
     onAdd({
       id: nanoid(),
-      name: e.target.elements.name.value,
-      number: e.target.elements.number.value,
+      name: values.name,
+      number: values.number,
     });
-    e.target.reset();
+    resetForm();
   };
   return (
-    <form className={s.form} onSubmit={handleSubmit}>
-      <p className={s.title}>Name</p>
-      <input className={s.input} type="text" name="name" />
-      <p className={s.title}>Number</p>
-      <input className={s.input} type="text" name="number" />
-      <button className={s.btn} type="submit">
-        Add contact
-      </button>
-    </form>
+    <div>
+      <Formik
+        initialValues={{ name: "", number: "" }}
+        onSubmit={handleSubmit}
+        validationYupSchema={validationYupSchema}
+      >
+        {({ isValid, values }) => (
+          <Form className={s.form}>
+            <label className={s.label} htmlFor={nameId}>
+              Name
+              <Field className={s.input} type="text" name="name" id={nameId} />
+              <ErrorMessage name="name" component="div" className={s.error} />
+            </label>
+
+            <label className={s.label} htmlFor={numberId}>
+              Number
+            </label>
+            <Field
+              className={s.input}
+              type="text"
+              name="number"
+              id={numberId}
+            />
+            <ErrorMessage name="number" component="div" className={s.error} />
+
+            <button
+              className={s.btn}
+              type="submit"
+              disabled={!isValid || !values.name || !values.number}
+            >
+              Add contact
+            </button>
+          </Form>
+        )}
+      </Formik>
+    </div>
   );
 };
 
