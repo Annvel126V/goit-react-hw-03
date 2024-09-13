@@ -18,8 +18,8 @@
   transition: all 350ms linear;
   outline: none;
   height: 30px;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .input:hover {
