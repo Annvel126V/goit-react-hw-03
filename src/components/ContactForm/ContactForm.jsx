@@ -45,15 +45,14 @@ const ContactForm = ({ onAdd }) => {
 
             <label className={s.label} htmlFor={numberId}>
               Number
+              <Field
+                className={s.input}
+                type="text"
+                name="number"
+                id={numberId}
+              />
+              <ErrorMessage name="number" component="div" className={s.error} />
             </label>
-            <Field
-              className={s.input}
-              type="text"
-              name="number"
-              id={numberId}
-            />
-            <ErrorMessage name="number" component="div" className={s.error} />
-
             <button
               className={s.btn}
               type="submit"

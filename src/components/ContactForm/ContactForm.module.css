@@ -41,9 +41,11 @@ input:focus-visible {
   outline: 4px auto rgb(62, 13, 102);
 }
 .btn {
+  display: flex;
+  justify-content: center;
   width: 150px;
   height: 50px;
-  margin-left: 100px;
+  margin-left: 70px;
 }
 .btn:disabled {
   border: 1px solid rgb(94, 92, 92);
