@@ -9,7 +9,7 @@ const validationYupSchema = Yup.object().shape({
     .min(3, "A minimum of 3 characters must be entered!")
     .max(50, "A maximum of 50 characters must be entered")
     .required("This field is required!"),
-  number: Yup.string()
+  number: Yup.number()
     .matches(/^[+\d\s]+$/, "ONLY NUMBERS!")
     .min(3, "A minimum of 3 characters must be entered!")
     .max(50, "A maximum of 50 characters must be entered")
