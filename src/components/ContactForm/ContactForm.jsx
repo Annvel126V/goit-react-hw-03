@@ -33,7 +33,7 @@ const ContactForm = ({ onAdd }) => {
       <Formik
         initialValues={{ name: "", number: "" }}
         onSubmit={handleSubmit}
-        validationYupSchema={validationYupSchema}
+        validationSchema={validationYupSchema}
       >
         {({ isValid, values }) => (
           <Form className={s.form}>
